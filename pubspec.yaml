@@ -21,7 +21,7 @@ flutter:
   uses-material-design: true
 
   assets:
-   - assets/images/
+   - images/
 
   fonts:
    - family: CM Sans Serif

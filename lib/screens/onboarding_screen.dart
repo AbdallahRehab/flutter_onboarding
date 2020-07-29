@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_onboarding_ui/utilities/styles.dart';
+
+
+
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -10,6 +12,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final int _numPages = 3;
   final PageController _pageController = PageController(initialPage: 0);
+  //final PageController _pageControllerlast = PageController(initialPage: 1,);
   int _currentPage = 0;
 
   List<Widget> _buildPageIndicator() {
@@ -25,9 +28,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       duration: Duration(milliseconds: 150),
       margin: EdgeInsets.symmetric(horizontal: 8.0),
       height: 8.0,
-      width: isActive ? 24.0 : 16.0,
+      width: isActive ? 32.0 : 15.0,
       decoration: BoxDecoration(
-        color: isActive ? Colors.white : Color(0xFF7B51D3),
+        color: isActive ? Color(0xFFCFCFCF) : Color(0xFFFBD14B),
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -45,10 +48,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               end: Alignment.bottomCenter,
               stops: [0.1, 0.4, 0.7, 0.9],
               colors: [
-                Color(0xFF3594DD),
-                Color(0xFF4563DB),
-                Color(0xFF5036D5),
-                Color(0xFF5B16D0),
+                Color(0xFF6A60A9),
+                Color(0xFF6A60A9),
+                Color(0xFF6A60A9),
+                Color(0xFF6A60A9),
+
               ],
             ),
           ),
@@ -60,18 +64,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 Container(
                   alignment: Alignment.centerRight,
                   child: FlatButton(
-                    onPressed: () => print('Skip'),
-                    child: Text(
-                      'Skip',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
+                    onPressed: (){
+
+
+
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Container(
+
+                        width: MediaQuery.of(context).size.width*0.2,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFCFCFCF),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'تخطي',
+                            style: TextStyle(
+                                color: Color(0xFF6A60A9),
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.bold
+                            ),textAlign: TextAlign.right,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
                 Container(
-                  height: 600.0,
+                  height:MediaQuery.of(context).size.height*0.69,
                   child: PageView(
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,
@@ -82,82 +104,108 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     },
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(30.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/onboarding0.png',
+                                  'images/undrawmedicine.png',
                                 ),
-                                height: 300.0,
-                                width: 300.0,
+                                height: MediaQuery.of(context).size.height*0.3,
+                                width: MediaQuery.of(context).size.width,
                               ),
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Connect people\naround the world',
-                              style: kTitleStyle,
+                              'التطعيمات',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 26.0,
+                                height: 1.5,
+                              ),textAlign: TextAlign.right,
                             ),
                             SizedBox(height: 15.0),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                              style: kSubtitleStyle,
+                              ' يمكنك متبابعة ومعرفة مواعيد اخذ ابنك للتطعيمات للحفاظ علي صحته ومع اقتراب موعد التطعيم سنرسل لك اشعار للتذكره حتي لا تنسي',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                height: 1.2,
+                              ),textAlign: TextAlign.right,
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(30.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/onboarding1.png',
+                                  'images/undrawfatherhood.png',
                                 ),
-                                height: 300.0,
-                                width: 300.0,
+                                height: MediaQuery.of(context).size.height*0.3,
+                                width: MediaQuery.of(context).size.width,
                               ),
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Live your life smarter\nwith us!',
-                              style: kTitleStyle,
+                              'التغذية',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 26.0,
+                                height: 1.5,
+                              ),textAlign: TextAlign.right,
                             ),
                             SizedBox(height: 15.0),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                              style: kSubtitleStyle,
+                              ' نوفر لك بعض النصائح لكي نجعل طفلك ينمو بشكل افضل,وايضا بعض طرق التغذيه السليمه لعلاج مرض السمنه ومرض النحافه',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                height: 1.2,
+                              ),textAlign: TextAlign.right,
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.all(40.0),
+                        padding: EdgeInsets.all(30.0),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Center(
                               child: Image(
                                 image: AssetImage(
-                                  'assets/images/onboarding2.png',
+
+                                  'images/undrawbaby .png',
                                 ),
-                                height: 300.0,
-                                width: 300.0,
+                                height: MediaQuery.of(context).size.height*0.3,
+                                width: MediaQuery.of(context).size.width,
                               ),
                             ),
                             SizedBox(height: 30.0),
                             Text(
-                              'Get a new experience\nof imagination',
-                              style: kTitleStyle,
+                              'الحضانات',
+                              style: TextStyle(
+                                color: Colors.white,
+
+                                fontSize: 26.0,
+                                height: 1.5,
+                              ),textAlign: TextAlign.right,
                             ),
                             SizedBox(height: 15.0),
                             Text(
-                              'Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod tempor incididunt ut labore et.',
-                              style: kSubtitleStyle,
+                              'سرعة الحصول علي مستشفي بها حضانه هو اهم اولوياتنا لإنقاذ حياة الطفل لذلك وفرنا لك طريقه سرعيه للحصول علي اقرب مستشفي بها حضانات متاحه',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                height: 1.2,
+                              ),textAlign: TextAlign.right,
                             ),
                           ],
                         ),
@@ -171,37 +219,40 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 _currentPage != _numPages - 1
                     ? Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.bottomRight,
-                          child: FlatButton(
-                            onPressed: () {
-                              _pageController.nextPage(
-                                duration: Duration(milliseconds: 500),
-                                curve: Curves.ease,
-                              );
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                Text(
-                                  'Next',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22.0,
-                                  ),
-                                ),
-                                SizedBox(width: 10.0),
-                                Icon(
-                                  Icons.arrow_forward,
-                                  color: Colors.white,
-                                  size: 30.0,
-                                ),
-                              ],
+                  child: Align(
+                    alignment: FractionalOffset.bottomRight,
+                    child: FlatButton(
+                      onPressed: () {
+                        _pageController.nextPage(
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              'التالي',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22.0,
+                              ),textAlign: TextAlign.right,
                             ),
-                          ),
+                            SizedBox(width: 10.0),
+                            Icon(
+                              Icons.arrow_forward,
+                              color: Colors.white,
+                              size: 30.0,
+                            ),
+                          ],
                         ),
-                      )
+                      ),
+                    ),
+                  ),
+                )
                     : Text(''),
               ],
             ),
@@ -210,26 +261,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
       bottomSheet: _currentPage == _numPages - 1
           ? Container(
-              height: 100.0,
-              width: double.infinity,
-              color: Colors.white,
-              child: GestureDetector(
-                onTap: () => print('Get started'),
-                child: Center(
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 30.0),
-                    child: Text(
-                      'Get started',
-                      style: TextStyle(
-                        color: Color(0xFF5B16D0),
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            )
+        height: 80.0,
+        width: double.infinity,
+        color: Colors.white,
+        child: GestureDetector(
+          onTap: () => print('Get started'),
+          child: Center(
+            child: Text(
+              'ابدأ',
+              style: TextStyle(
+                color: Color(0xFF5B16D0),
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+              ),textAlign: TextAlign.right,
+            ),
+          ),
+        ),
+      )
           : Text(''),
     );
   }
